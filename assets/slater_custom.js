@@ -1,1 +1,1 @@
-let paths = window.location.pathname.split("/"); import("./slater_main.js");
+let paths = window.location.pathname.split("/"); import("./slater_main.js?v=1.0.1");
