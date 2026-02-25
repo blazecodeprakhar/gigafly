@@ -1,0 +1,20 @@
+# Python
+*.py
+__pycache__/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Workspace
+.vscode/
+.idea/
+.agent/
+.gemini/
+
+# Misc
+index_clean.html
+index_raw.html

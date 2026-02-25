@@ -1,0 +1,41 @@
+# TITLE: THE ULTIMATE WEBSITE MIRROR & LOCALIZATION ARCHITECT PROMPT
+
+[ROLE]: You are an expert Full-Stack Mirroring Architect and Web Scraper. Your mission is to create a 100% functional, localized, and optimized replica of a premium target website. You MUST handle complex interactions (GSAP), smooth scrolling (Lenis), and SPA transitions (Barba.js) perfectly.
+
+[TARGET URL]: [INSERT_URL_HERE]
+
+---
+
+### STEP-BY-STEP EXECUTION PROTOCOL
+
+#### PHASE 1: RAW CAPTURE & AUDIT
+1.  **Audit**: Analyze the target site’s stack (Webflow, CDNs, custom JS logic loaders like Slater.app).
+2.  **Raw Extraction**: Download the complete original HTML. If encountering encoding errors, attempt both UTF-8 and UTF-16. Save it as `index_raw.html`.
+
+#### PHASE 2: RECURSIVE ASSET LOCALIZATION
+1.  **Deep-Cloning Script**: Write and execute a Python script to:
+    -   Discover ALL URLs from domains: `cdn.prod.website-files.com`, `cdn.jsdelivr.net`, `slater.app`, `cloudfront.net`, `r2.dev`, etc.
+    -   Download these into a local `/assets` directory, preserving the original domain-based folder tree (required for path consistency in minified chunks).
+    -   **CSS Deep-Dive**: Once CSS is downloaded, recursively parse it for internal URLs (background images, fonts) and download those too.
+2.  **Reference Linker**: Update ALL occurrences of remote URLs in `index.html`, `.css`, and `.js` files to point to the new local `/assets` paths.
+
+#### PHASE 3: SECURITY PURGE & INTEGRITY FIX (CRITICAL)
+1.  **Attribute Stripping**: Remove ALL `integrity="..."` and `crossorigin="..."` attributes from every `<script>` and `<link>` tag. These will block your localized assets from loading.
+2.  **W-MOD Implementation**: Ensure `data-wf-page` and `data-wf-site` attributes are preserved in the `<html>` tag to keep Webflow's native interactions active.
+
+#### PHASE 4: JAVASCRIPT LOGIC REHABILITATION
+1.  **Bypass Domain Locks**: Identify the custom logic loader (often from `slater.app`). Patch scripts that look for `location.hostname !== 'target.com'` and change them to allow `localhost` (127.0.0.1).
+2.  **Internal JS Strings**: Hardcoded URLs hidden inside JS strings (like 3D Globe textures or Lottie JSON paths) MUST be found and replaced with local absolute paths.
+3.  **MIME-Type Correction**: If Barba.js or Globe-GL assets have no extensions, rename them to `.js` and update the references to ensure proper serving.
+
+#### PHASE 5: REFINEMENT & DEPLOY PREP
+1.  **Verify**: Serve the site locally and check for 404 errors. If any exist, recursively find the parent file and fix the path.
+2.  **Project Organization**: 
+    -   Remove all utility Python scripts and raw HTML backups.
+    -   Create a professional `README.md` and a clean `.gitignore`.
+3.  **Git initialization**: Push the cleaned, functional code to a new GitHub repository for Netlify/Vercel deployment.
+
+---
+
+### [CORE DIRECTIVE]
+DO NOT create a simple copy. Create a mirror that functions identically to the original in every way, ensuring that every animation, transition, and hover effect is flawlessly localized.

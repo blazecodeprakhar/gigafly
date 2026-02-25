@@ -1,0 +1,168 @@
+/* 
+  BRAND STYLE GUIDE
+  Final Layout & Theme Correction
+*/
+
+:root {
+  --brand-primary: #100D0C;
+  --brand-accent: #7A716E;
+  --brand-text: #FFFFFF;
+  --brand-text-muted: rgba(255, 255, 255, 0.7);
+
+  /* Headers and Display Fonts */
+  --font-logo: "GT America Expanded", sans-serif;
+  --letter-spacing-logo: -0.04em;
+
+  --section-bg-dark: #100D0C;
+  --section-bg-light: #F5F5F5;
+}
+
+/* 
+  1. THEME-AWARE DYNAMIC COLORING
+*/
+
+.client-logo {
+  font-family: var(--font-logo) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: var(--letter-spacing-logo) !important;
+  font-size: 24px !important;
+  line-height: 1.2 !important;
+  color: inherit !important;
+  white-space: nowrap !important;
+  display: block !important;
+  transition: color 0.4s ease-in-out;
+}
+
+/* 
+  2. NAVIGATION BAR STRUCTURAL FIX
+*/
+
+.header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 80px !important;
+  z-index: 9999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  /* Center the container */
+  background-color: transparent !important;
+  pointer-events: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.header .container {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 4% !important;
+  pointer-events: none !important;
+  max-width: 100% !important;
+}
+
+.header_c {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none !important;
+}
+
+.header_nav,
+.header_cta {
+  flex: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  height: 100% !important;
+  pointer-events: auto !important;
+}
+
+.header_logo {
+  flex: 0 0 auto !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 100% !important;
+  pointer-events: auto !important;
+}
+
+.header_nav {
+  justify-content: flex-start !important;
+}
+
+.header_cta {
+  justify-content: flex-end !important;
+}
+
+/* FIXING NAV ITEM SIZES */
+.nav-item {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 16px !important;
+  height: 100% !important;
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.nav-item_label {
+  font-size: 13px !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1.2 !important;
+}
+
+.link-logo {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 100% !important;
+}
+
+.logo {
+  display: flex !important;
+  align-items: center !important;
+  height: auto !important;
+  width: auto !important;
+}
+
+/* Theme variable overrides */
+.theme_on-color .client-logo,
+.theme_on-color .nav-item {
+  color: #FFFFFF !important;
+}
+
+.theme_on-light .client-logo,
+.theme_on-light .nav-item {
+  color: #100D0C !important;
+}
+
+/* 
+  3. PRELOADER & GHOSTS 
+*/
+[preloader] {
+  pointer-events: none !important;
+}
+
+.preloader_info {
+  display: none !important;
+}
+
+@media screen and (max-width: 991px) {
+  .header {
+    height: 60px !important;
+  }
+
+  .header_nav,
+  .header_cta {
+    display: none !important;
+  }
+}
