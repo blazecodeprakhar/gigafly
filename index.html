@@ -3258,6 +3258,22 @@
           .sky-bg_hero_grad-over {
             background: linear-gradient(180deg, rgba(1, 90, 169, 0.00) 0%, rgba(1, 90, 169, 0.01) 11.79%, rgba(1, 90, 169, 0.03) 21.38%, rgba(1, 90, 169, 0.07) 29.12%, rgba(1, 90, 169, 0.12) 35.34%, rgba(1, 90, 169, 0.18) 40.37%, rgba(1, 90, 169, 0.25) 44.56%, rgba(1, 90, 169, 0.33) 48.24%, rgba(1, 90, 169, 0.41) 51.76%, rgba(1, 90, 169, 0.50) 55.44%, rgba(1, 90, 169, 0.59) 59.63%, rgba(1, 90, 169, 0.67) 64.66%, rgba(1, 90, 169, 0.76) 70.88%, rgba(1, 90, 169, 0.85) 78.62%, rgba(1, 90, 169, 0.93) 88.21%, #015AA9 100%);
           }
+
+          #popular-packages {
+            position: relative;
+            z-index: 10;
+            background-color: #FFF8ED;
+          }
+
+          .cta {
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+          }
+
+          .cta.is-hidden {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+          }
         </style>
       </div>
     </div>
@@ -3314,6 +3330,18 @@
         : "assets/slater_custom.js";
 
       loadgigafly3b3a66adf5d4465ba5beb2ab02e6cf8e(src);
+    });
+
+    // Hide CTA when reaching Popular Packages section
+    window.addEventListener('load', function () {
+      if (window.gsap && window.ScrollTrigger) {
+        ScrollTrigger.create({
+          trigger: "#popular-packages",
+          start: "top 85%",
+          onEnter: () => document.querySelector(".cta").classList.add("is-hidden"),
+          onLeaveBack: () => document.querySelector(".cta").classList.remove("is-hidden"),
+        });
+      }
     });
   </script>
 </body>
