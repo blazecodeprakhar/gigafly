@@ -277,6 +277,16 @@ body.is-loading {
   svg {
     max-width: 100% !important;
     height: auto !important;
+
+    /* Logo fade-in animation */
+    .logo-fade-in {
+      opacity: 0;
+      transition: opacity 0.8s ease-out;
+    }
+
+    .logo-fade-in.loaded {
+      opacity: 1;
+    }
   }
 }
 
