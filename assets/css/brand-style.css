@@ -148,12 +148,54 @@
 /* 
   3. PRELOADER & GHOSTS 
 */
-[preloader] {
-  pointer-events: none !important;
+/* 1. Prevent Flicker: Initially hide any element marked for animation */
+.preloader_info[data-prevent-flicker="true"] {
+  opacity: 0;
+  visibility: hidden;
 }
 
+
 .preloader_info {
-  display: none !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 999999 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: auto !important;
+  text-align: center !important;
+}
+
+/* 2. The Preloader Wrapper: Fix it to the screen and ensure it sits above everything */
+.preloader {
+  position: fixed !important;
+  inset: 0% 0% auto !important;
+  /* Covers top, left, right */
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 99999 !important;
+  display: flex !important;
+  align-items: center !important;
+  /* Center vertically */
+  justify-content: center !important;
+  /* Center horizontally */
+  background-color: #100D0C !important;
+  /* Solid dark background */
+}
+
+/* 3. Text Alignment Utilities */
+.a-center {
+  text-align: center !important;
+}
+
+.text-light {
+  color: #FFFFFF !important;
+}
+
+/* Prevent clicking through the preloader while it's active */
+body.is-loading {
+  overflow: hidden !important;
 }
 
 @media screen and (max-width: 991px) {
@@ -165,4 +207,80 @@
   .header_cta {
     display: none !important;
   }
+}
+
+@media screen and (max-width: 991px) {
+
+  /* General Typography Fixes */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .p1,
+  .p5,
+  .t3,
+  .t4,
+  .t5,
+  .t7,
+  .title {
+    line-height: 1.25 !important;
+    word-wrap: break-word !important;
+  }
+
+  /* Fix Sticky Mobile CTA OVERLAP */
+  .cta,
+  .globe-bot-w {
+    position: relative !important;
+    bottom: auto !important;
+    height: auto !important;
+    min-height: auto !important;
+    margin-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  .btn-cta_c,
+  .to-top {
+    position: relative !important;
+    bottom: auto !important;
+    z-index: 10 !important;
+  }
+
+  /* Prevent horizontal scrolling and spacing issues */
+  body,
+  html {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+
+  .section,
+  .container {
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+
+  /* Fix images extending out */
+  img,
+  svg {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+}
+
+.preloader_c {
+  position: relative !important;
+  z-index: 999999 !important;
 }
