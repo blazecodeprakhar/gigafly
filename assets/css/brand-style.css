@@ -304,3 +304,23 @@ body.is-loading {
 .header .link-logo {
   pointer-events: auto !important;
 }
+
+/* Global Pointer Events Fix for Overlays */
+.preloader,
+.preloader_c,
+.preloader_bg,
+.hero-w_bg_front-over,
+.unit-96,
+.hero-s_bot {
+  pointer-events: none !important;
+}
+
+.nav-item,
+.btn-cta,
+.link-logo,
+a,
+button {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  z-index: 10000 !important;
+}
