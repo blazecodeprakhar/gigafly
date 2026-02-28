@@ -294,3 +294,8 @@ body.is-loading {
   position: relative !important;
   z-index: 999999 !important;
 }
+
+/* Fix Header Clicks */
+.header a, .header button, .header .nav-item, .header .btn, .header .link-logo {
+  pointer-events: auto !important;
+}
