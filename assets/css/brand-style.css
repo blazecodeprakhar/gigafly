@@ -165,6 +165,7 @@
   justify-content: center !important;
   margin: auto !important;
   text-align: center !important;
+  pointer-events: none !important;
 }
 
 /* 2. The Preloader Wrapper: Fix it to the screen and ensure it sits above everything */
@@ -296,6 +297,10 @@ body.is-loading {
 }
 
 /* Fix Header Clicks */
-.header a, .header button, .header .nav-item, .header .btn, .header .link-logo {
+.header a,
+.header button,
+.header .nav-item,
+.header .btn,
+.header .link-logo {
   pointer-events: auto !important;
 }
