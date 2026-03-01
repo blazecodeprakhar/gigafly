@@ -207,139 +207,69 @@
   <meta property="og:video:width" content="1200">
   <meta property="og:video:height" content="630">
 
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  
 
-    /* Reset browser autofill styles */
-    input:-webkit-autofill,
-    textarea:-webkit-autofill,
-    select:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
-      -webkit-text-fill-color: inherit !important;
-      caret-color: inherit !important;
-    }
+    
 
-    input:-webkit-autofill,
-    textarea:-webkit-autofill,
-    select:-webkit-autofill {
-      transition: background-color 9999s ease-in-out 0s !important;
-    }
-  </style>
-
-  <style>
-    [data-prevent-flicker='true'] {
-      visibility: hidden;
-    }
-
-    [preloader] {
-      display: block;
-    }
-
-    @media screen and (orientation: landscape) and (max-width: 991px) {
-      .landscape-cover {
-        display: block;
+    <style>
+      /* Final UI fixes for white gap and button visibility */
+      html, body {
+        background-color: #100D0C !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        min-height: 100% !important;
       }
-    }
+      
+      /* Force dark background for any potential gaps */
+      #wf-form-Book-the-Flight,
+      .page-wrapper,
+      [data-barba="container"],
+      [data-barba="wrapper"] {
+        background-color: #100D0C !important;
+        margin-bottom: 0 !important;
+      }
 
-    .unset-all {
-      all: unset;
-    }
+      /* Force the floating CTA to be visible and fixed at the bottom */
+      .cta {
+        position: fixed !important;
+        bottom: 24px !important;
+        left: 0 !important;
+        width: 100% !important;
+        z-index: 9999 !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        display: block !important;
+        background-color: transparent !important;
+        transform: none !important;
+      }
+      
+      /* Ensure the button text is visible */
+      .btn-cta_btn_label .t7 {
+        visibility: visible !important;
+        opacity: 1 !important;
+        color: #FFFFFF !important;
+        display: block !important;
+        transform: none !important;
+      }
+      
+      /* Fix for button background */
+      .btn-cta_btn {
+        background-color: rgba(255, 255, 255, 0.15) !important;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
 
-    .class-name::-webkit-scrollbar {
-      display: none;
-    }
-  </style>
-
-  <style>
-    [svg="animated"] path {
-      stroke-dasharray: 1;
-      stroke-dashoffset: 1;
-      visibility: hidden;
-    }
-  </style>
-
-  <style>
-    ::-moz-selection {
-      color: var(--_colors---base-0--100);
-      background: var(--_colors---base-1000--100);
-    }
-
-    ::selection {
-      color: var(--_colors---base-0--100);
-      background: var(--_colors---base-1000--100);
-    }
-  </style>
-
-  <style>
-    ::-webkit-scrollbar {
-      width: 0em;
-      height: 0em;
-    }
-
-    ::-webkit-scrollbar-button {
-      width: 0em;
-      height: 0em;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0);
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0);
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: rgba(255, 255, 255, 0);
-    }
-
-    ::-webkit-scrollbar-thumb:active {
-      background: rgba(255, 255, 255, 1);
-    }
-  </style>
-
-  <script>
-    console.log(
-      "%c" +
-      `
-
-      ┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á.$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-    ┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á.$$$$$$$+////////////////////////////////////////+$$$$$$$.
-    ┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á$$$$$$Γé¼///////////////////////////////////////////////++++++++++$$$$$$.
-    ┬á┬á┬á┬á┬á┬á┬á.$$$$$+////////////////┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á+/+++++++++++++++$$$$$$
-    ┬á┬á┬á┬á.$$$$$++++//////+┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á.+++++++Γé¼Γé¼Γé¼$$$$$$
-    ┬á┬á.$$$$$Γé¼Γé¼++++/┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á++Γé¼Γé¼Γé¼Γé¼$$$$$$.
-    ┬á┬á$$$$$$Γé¼Γé¼+$┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á.Γé¼Γé¼$Γé¼$$$$$
-    ┬á┬á$$$$$$Γé¼┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á$$$$$$$
-    ┬á┬á$$$$$$$┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á$$$$$$$$$┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á$$$$$$$$$┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á$$$$$$Γé¼
-    ┬á┬á$$$$$$$$$$┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á/////////┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á/////////┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á ┬á┬á┬á┬á┬á┬á$$$$$$$++Γé¼
-    ┬á┬á┬á$$$Γé¼Γé¼$$$$$$$$.┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á/////////┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á///////// ┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á.$$$$$$$Γé¼++++Γé¼
-    ┬á┬á┬á┬á$$$Γé¼Γé¼Γé¼Γé¼Γé¼Γé¼$$$$$$$$$$.┬á┬á┬á┬á┬á┬á┬á┬á/////////┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á/////////┬á┬á┬á┬á┬á┬á┬á┬á.$$$$$$$$$+/////++++
-    ┬á┬á┬á┬á┬á┬á.Γé¼Γé¼Γé¼Γé¼Γé¼Γé¼Γé¼Γé¼++++++$$$$$$$$$$$/////////┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á/////////$$$$$$$$$$$/////////////+.
-    ┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á$Γé¼Γé¼Γé¼Γé¼++++++++++++//////////////┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á//////////////////////////////$
-    ┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬áΓé¼++++++++++++/////////////┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á/////////////////////////
-    ┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á++++/////////////┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á/////////////////
-    ┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á/////////┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á/////////
-    ┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á/////////┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á/////////
-    ┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á/////////┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á/////////
-  
-    ┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á With Γ¥ñ∩╕Å by THE FIRST THE LAST
-    ┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á┬á ┬á┬á  / thefirstthelast.agency /
-  
-      `,
-      "font-size:10px;color: rgb(255, 117, 194);"
-    )
-  </script>
-
-  <!-- BRAND CUSTOMIZATION -->
-  <link href="assets/css/brand-style.css" rel="stylesheet" type="text/css" />
-  <script src="assets/js/client-config.js"></script>
+      /* Clean up the footer structure */
+      .footer {
+        margin-bottom: 0 !important;
+        padding-bottom: 120px !important;
+        background-color: #100D0C !important;
+      }
+    </style>
 </head>
 
 <body class="body">
@@ -1252,15 +1182,7 @@
       loadgigafly3b3a66adf5d4465ba5beb2ab02e6cf8e(src);
     });
 
-    // Hide CTA when reaching Popular Packages section
-    window.addEventListener('load', function () {
-      if (window.gsap && window.ScrollTrigger) {
-        ScrollTrigger.create({
-          trigger: "#popular-packages",
-          start: "top 85%",
-          onEnter: () => document.querySelector(".cta").classList.add("is-hidden"),
-          onLeaveBack: () => document.querySelector(".cta").classList.remove("is-hidden"),
-        });
+    // Redundant CTA control removed
       }
     });
   </script>
