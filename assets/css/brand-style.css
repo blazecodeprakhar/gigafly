@@ -324,3 +324,34 @@ button {
   cursor: pointer !important;
   z-index: 10000 !important;
 }
+
+/* ===== BARBA TRANSITION OPTIMIZATION ===== */
+/* Ensure container transitions are responsive on first click */
+[data-barba="wrapper"] {
+  position: relative;
+}
+
+[data-barba="container"] {
+  position: relative;
+  width: 100%;
+  will-change: opacity;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Remove any stalls in container rendering */
+[data-barba-namespace] {
+  display: block;
+}
+
+/* Ensure links trigger transitions immediately */
+a:not([data-barba-prevent]) {
+  touch-action: manipulation;
+}
+
+/* Prevent double-click delays on navigation */
+a,
+button,
+[role="button"] {
+  -webkit-touch-callout: none;
+  user-select: none;
+}
