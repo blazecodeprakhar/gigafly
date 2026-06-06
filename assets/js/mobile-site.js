@@ -66,8 +66,22 @@
     }
 
     // 3. Close menu when clicking standard nav links (page-to-page transition)
+    //    We explicitly navigate after closing to avoid the link being swallowed
+    //    by CSS transitions on slow Android/iOS devices.
     const navLink = e.target.closest('.m-nav-link');
     if (navLink) {
+      const href = navLink.getAttribute('href');
+      // Scroll-to links are handled above; only handle page links here
+      if (href && !href.startsWith('#')) {
+        closeMobileMenu();
+        // Small timeout lets the menu close animation start before navigating
+        // so users see the transition begin — avoids a blank flash on iOS
+        setTimeout(function () {
+          window.location.href = href;
+        }, 50);
+        return;
+      }
+      // For hash-only links (shouldn't normally reach here), just close
       closeMobileMenu();
       return;
     }
@@ -90,6 +104,44 @@
       return;
     }
   });
+
+  // ── INSTANT TOUCH NAVIGATION ──────────────────────────────────────────────
+  // On iOS/Android a plain click on <a> tags can be delayed up to 300ms by the
+  // browser waiting to detect a double-tap. We fire navigation immediately on
+  // touchend for footer links and the logo to make them feel snappy.
+  // A `navigating` flag prevents the subsequent click from double-firing.
+  var navigating = false;
+
+  document.addEventListener('touchend', function (e) {
+    if (navigating) return;
+
+    // Footer nav & legal links
+    var footerLink = e.target.closest('.m-footer-link');
+    if (footerLink) {
+      var href = footerLink.getAttribute('href');
+      if (href && !href.startsWith('#')) {
+        e.preventDefault();
+        navigating = true;
+        window.location.href = href;
+        setTimeout(function () { navigating = false; }, 1000);
+        return;
+      }
+    }
+
+    // Logo (home link in header)
+    var logo = e.target.closest('.m-logo');
+    if (logo) {
+      var logoHref = logo.getAttribute('href');
+      if (logoHref && !logoHref.startsWith('#')) {
+        e.preventDefault();
+        navigating = true;
+        window.location.href = logoHref;
+        setTimeout(function () { navigating = false; }, 1000);
+        return;
+      }
+    }
+  }, { passive: false });
+  // ─────────────────────────────────────────────────────────────────────────
 
   // Global form submission interceptor to disable actual API submissions
   document.addEventListener('submit', function (e) {

@@ -162,6 +162,9 @@
     display: flex !important;
     align-items: center !important;
     gap: 8px !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent !important;
+    cursor: pointer !important;
   }
 
   .m-logo-img {
@@ -322,6 +325,11 @@
     text-decoration: none !important;
     text-transform: uppercase !important;
     transition: color 0.2s ease !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent !important;
+    display: block !important;
+    min-height: 44px !important;
+    padding: 8px 0 !important;
   }
 
   .m-nav-link:active {
@@ -1111,6 +1119,15 @@
     font-weight: 500 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.05em !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    min-height: 44px !important;
+    padding: 4px 8px !important;
+    cursor: pointer !important;
+    position: relative !important;
+    z-index: 1 !important;
   }
 
   .m-footer-link:active {
@@ -1149,11 +1166,11 @@
     display: none;
   }
 
-  /* HIDE PAGE CONTENT WHEN MENU IS OPEN */
+  /* HIDE PAGE CONTENT WHEN MENU IS OPEN (visibility only, never block footer/logo clicks) */
   body.m-menu-open .mobile-only-site>*:not(.m-header):not(.m-nav-overlay) {
     opacity: 0 !important;
-    pointer-events: none !important;
-    visibility: hidden !important;
+    /* NOTE: pointer-events intentionally NOT set to none here —
+       it caused footer & logo links to be unclickable during menu close transitions */
     transition: opacity 0.3s ease !important;
   }
 
