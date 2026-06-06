@@ -18,7 +18,7 @@
   }
 
   body {
-    background-color: #100D0C !important;
+    background-color: var(--m-bg-dark) !important;
     overflow-x: hidden !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -39,8 +39,8 @@
   /* SHOW MOBILE SITE WRAPPER */
   .mobile-only-site {
     display: block !important;
-    background-color: #100D0C !important;
-    color: #FFFFFF !important;
+    background-color: var(--m-bg-dark) !important;
+    color: var(--m-text-light) !important;
     font-family: 'Inter', sans-serif !important;
     font-size: 14px !important;
     line-height: 1.6 !important;
@@ -61,17 +61,23 @@
   }
 
   /* VARIABLES */
-  .mobile-only-site {
-    --m-bg-dark: #100D0C;
-    --m-bg-card: #1C1816;
-    --m-bg-input: #231F1D;
-    --m-primary: #D32F2F;
+  :root {
+    --m-bg-dark: #E0F2FE; /* Light sky blue background */
+    --m-bg-light: #FAF6EE; /* Premium Cream background for alternating sections */
+    --m-bg-card: #FFFFFF; /* White background for cards, list items, accordions */
+    --m-bg-input: #F0F9FF; /* Soft sky blue/white input fields */
+    --m-primary: #D32F2F; /* Premium red brand color stays for accent contrast */
     --m-primary-hover: #B71C1C;
-    --m-text-light: #FFFFFF;
-    --m-text-muted: rgba(255, 255, 255, 0.7);
-    --m-text-dimmed: rgba(255, 255, 255, 0.4);
-    --m-border: rgba(255, 255, 255, 0.08);
-    --m-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    --m-text-light: #0F172A; /* Slate 900 primary dark text for light theme */
+    --m-text-muted: #334155; /* Slate 700 secondary text */
+    --m-text-dimmed: #64748B; /* Slate 500 tertiary/muted details text */
+    --m-border: rgba(15, 23, 42, 0.08); /* Clean dark-tinted borders */
+    --m-shadow: 0 8px 30px rgba(15, 23, 42, 0.04); /* Soft premium drop shadow */
+  }
+
+  /* Override desktop-level text-light class for mobile light mode */
+  .text-light {
+    color: var(--m-text-light) !important;
   }
 
   /* TYPOGRAPHY */
@@ -127,7 +133,7 @@
     left: 0 !important;
     width: 100% !important;
     height: 64px !important;
-    background: rgba(16, 13, 12, 0.9) !important;
+    background: rgba(224, 242, 254, 0.8) !important; /* Translucent Light Sky Blue */
     backdrop-filter: blur(12px) !important;
     -webkit-backdrop-filter: blur(12px) !important;
     border-bottom: 1px solid var(--m-border) !important;
@@ -171,8 +177,8 @@
 
   .m-phone-btn {
     color: var(--m-text-light) !important;
-    background: rgba(255, 255, 255, 0.08) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background: rgba(15, 23, 42, 0.05) !important;
+    border: 1px solid rgba(15, 23, 42, 0.08) !important;
     width: 38px !important;
     height: 38px !important;
     border-radius: 50% !important;
@@ -184,7 +190,7 @@
   }
 
   .m-phone-btn:active {
-    background: rgba(255, 255, 255, 0.15) !important;
+    background: rgba(15, 23, 42, 0.1) !important;
   }
 
   .m-hamburger {
@@ -228,7 +234,7 @@
     left: 0 !important;
     width: 100vw !important;
     height: calc(100vh - 64px) !important;
-    background: rgba(16, 13, 12, 0.85) !important;
+    background: rgba(240, 249, 255, 0.92) !important; /* Glassmorphism light sky blue overlay */
     backdrop-filter: blur(16px) !important;
     -webkit-backdrop-filter: blur(16px) !important;
     z-index: 9999 !important;
@@ -357,7 +363,7 @@
     width: 42px !important;
     height: 42px !important;
     border-radius: 50% !important;
-    background: rgba(255, 255, 255, 0.05) !important;
+    background: rgba(15, 23, 42, 0.05) !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -407,7 +413,7 @@
     padding-top: 110px !important;
     padding-bottom: 60px !important;
     position: relative !important;
-    background: radial-gradient(circle at top right, rgba(211, 47, 47, 0.25), transparent 60%), linear-gradient(rgba(16, 13, 12, 0.7), #100D0C), url('../cdn.prod.website-files.com/68b57ef5ef86011d9b251e8e/68bf31df0eb6b62331d8e35a_9557f7de34f540aa715092b1bcdbbf57_img_sky-hero.webp') center/cover no-repeat !important;
+    background: radial-gradient(circle at top right, rgba(211, 47, 47, 0.15), transparent 60%), linear-gradient(rgba(224, 242, 254, 0.5), #E0F2FE), url('../cdn.prod.website-files.com/68b57ef5ef86011d9b251e8e/68bf31df0eb6b62331d8e35a_9557f7de34f540aa715092b1bcdbbf57_img_sky-hero.webp') center/cover no-repeat !important;
     text-align: center !important;
     overflow: hidden !important;
   }
@@ -416,7 +422,7 @@
     min-height: 42vh !important;
     padding-top: 100px !important;
     padding-bottom: 40px !important;
-    background: linear-gradient(rgba(16, 13, 12, 0.7), #100D0C), url('../cdn.prod.website-files.com/68b57ef5ef86011d9b251e8e/68bf31df0eb6b62331d8e35a_9557f7de34f540aa715092b1bcdbbf57_img_sky-hero.webp') center/cover no-repeat !important;
+    background: linear-gradient(rgba(224, 242, 254, 0.5), #E0F2FE), url('../cdn.prod.website-files.com/68b57ef5ef86011d9b251e8e/68bf31df0eb6b62331d8e35a_9557f7de34f540aa715092b1bcdbbf57_img_sky-hero.webp') center/cover no-repeat !important;
   }
 
   .m-hero-badge {
@@ -488,13 +494,13 @@
   }
 
   .m-btn-secondary {
-    background-color: rgba(255, 255, 255, 0.08) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background-color: rgba(15, 23, 42, 0.05) !important;
+    border: 1px solid rgba(15, 23, 42, 0.1) !important;
     color: var(--m-text-light) !important;
   }
 
   .m-btn-secondary:active {
-    background-color: rgba(255, 255, 255, 0.15) !important;
+    background-color: rgba(15, 23, 42, 0.1) !important;
   }
 
   /* SECTIONS GENERAL */
@@ -504,11 +510,11 @@
   }
 
   .m-section-dark {
-    background-color: #100D0C !important;
+    background-color: var(--m-bg-dark) !important;
   }
 
   .m-section-light {
-    background-color: #161211 !important;
+    background-color: var(--m-bg-light) !important;
   }
 
   .m-section-title-wrapper {
@@ -632,7 +638,7 @@
 
   .m-accordion-inner {
     padding: 0 20px 20px 20px !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.03) !important;
+    border-top: 1px solid var(--m-border) !important;
     padding-top: 16px !important;
   }
 
@@ -670,9 +676,9 @@
     position: absolute !important;
     top: 12px !important;
     left: 12px !important;
-    background: rgba(16, 13, 12, 0.8) !important;
+    background: rgba(15, 23, 42, 0.7) !important;
     backdrop-filter: blur(4px) !important;
-    color: var(--m-text-light) !important;
+    color: #FFFFFF !important;
     padding: 4px 10px !important;
     border-radius: 20px !important;
     font-size: 0.85rem !important;
@@ -680,7 +686,7 @@
     display: flex !important;
     align-items: center !important;
     gap: 4px !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
   }
 
   .m-pkg-rating span {
@@ -693,10 +699,19 @@
     left: 0 !important;
     width: 100% !important;
     padding: 30px 16px 12px 16px !important;
-    background: linear-gradient(0deg, rgba(16, 13, 12, 0.95), transparent) !important;
+    background: linear-gradient(0deg, rgba(15, 23, 42, 0.85), transparent) !important;
     display: flex !important;
     flex-direction: column !important;
     gap: 4px !important;
+  }
+
+  /* Specific overlays for text contrast */
+  .m-pkg-location-overlay .m-pkg-loc-text {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  .m-pkg-location-overlay .m-pkg-title {
+    color: #FFFFFF !important;
   }
 
   .m-pkg-loc-text {
@@ -1033,7 +1048,7 @@
 
   /* FOOTER */
   .m-footer {
-    background-color: #0b0908 !important;
+    background-color: #0F172A !important; /* Rich Dark Slate for Footer */
     padding: 48px 0 96px 0 !important;
     /* extra padding bottom to account for floating CTA */
     border-top: 1px solid var(--m-border) !important;
@@ -1054,7 +1069,7 @@
     font-size: 1.3rem !important;
     text-transform: uppercase !important;
     letter-spacing: -0.03em !important;
-    color: var(--m-text-light) !important;
+    color: #FFFFFF !important; /* Force white in dark footer */
   }
 
   .m-footer-logo-img {
@@ -1064,7 +1079,7 @@
 
   .m-footer-slogan {
     font-size: 0.95rem !important;
-    color: var(--m-text-dimmed) !important;
+    color: rgba(255, 255, 255, 0.6) !important;
     font-style: italic !important;
   }
 
@@ -1074,13 +1089,13 @@
     flex-wrap: wrap !important;
     gap: 20px !important;
     margin-bottom: 30px !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.03) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
     padding: 16px 0 !important;
   }
 
   .m-footer-link {
-    color: var(--m-text-muted) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
     text-decoration: none !important;
     font-size: 0.9rem !important;
     font-weight: 500 !important;
@@ -1094,15 +1109,15 @@
 
   .m-footer-address {
     font-size: 0.95rem !important;
-    color: var(--m-text-muted) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
     margin-bottom: 20px !important;
   }
 
   .m-footer-copyright {
     font-size: 0.75rem !important;
-    color: var(--m-text-dimmed) !important;
+    color: rgba(255, 255, 255, 0.4) !important;
     letter-spacing: 0.05em !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.03) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
     padding-top: 24px !important;
   }
 
