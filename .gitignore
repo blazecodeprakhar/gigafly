@@ -1,20 +1,41 @@
-# Python
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build output
+dist/
+.next/
+out/
+
+# Python dev scripts (removed from project)
 *.py
 __pycache__/
+
+# Diff / temp files
+*.diff
+diff*.txt
+my_diff.txt
 
 # OS files
 .DS_Store
 Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
 
 # Logs
 *.log
+npm-debug.log*
 
-# Workspace
-.vscode/
-.idea/
-.agent/
+# Environment
+.env
+.env.local
+.env.production
+
+# Gemini AI temp files
 .gemini/
-
-# Misc
-index_clean.html
-index_raw.html

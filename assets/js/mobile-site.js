@@ -91,6 +91,57 @@
     }
   });
 
+  // Global form submission interceptor to disable actual API submissions
+  document.addEventListener('submit', function (e) {
+    const form = e.target;
+    
+    // For mobile inquiry form, let the existing handler below run
+    if (form.classList.contains('m-inquiry-form')) {
+      return; 
+    }
+    
+    // For all other forms (desktop popups, contact forms, etc.)
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    
+    console.log('Form submission intercepted. API connection is currently set to null.');
+    
+    // Try to trigger Webflow's success UI state locally
+    const container = form.closest('.w-form');
+    if (container) {
+      const successEl = container.querySelector('.w-form-done');
+      const failEl = container.querySelector('.w-form-fail');
+      if (successEl) {
+        form.style.display = 'none';
+        successEl.style.display = 'block';
+        
+        // Custom GSAP animation for popup success modal
+        const successCard = successEl.querySelector('.form-success_card');
+        if (successCard && window.gsap) {
+          gsap.fromTo(successCard, { yPercent: 110 }, { yPercent: 0, duration: 1, ease: "Out" });
+        }
+      }
+    }
+    
+    // If it's a contact page submit button, show local success state
+    const submitBtn = form.querySelector('button[type="submit"]') || form.querySelector('.btn-submit');
+    if (submitBtn) {
+      if (submitBtn.tagName === 'BUTTON') {
+        submitBtn.textContent = 'Message Sent Successfully!';
+        submitBtn.style.backgroundColor = '#2E7D32'; // green
+        submitBtn.disabled = true;
+      } else {
+        const labelEl = submitBtn.querySelector('.p5.text-light') || submitBtn.querySelector('.btn-cta_btn-icon_icon') || submitBtn;
+        if (labelEl) {
+          labelEl.textContent = 'Sent Successfully!';
+          submitBtn.style.pointerEvents = 'none';
+          submitBtn.style.opacity = '0.7';
+        }
+      }
+    }
+  }, true); // useCapture = true to intercept before jQuery or Webflow's scripts
+
   // Handle form submissions for mobile-only forms
   document.addEventListener('submit', function (e) {
     const form = e.target.closest('.m-inquiry-form');
@@ -115,7 +166,7 @@
         message: formData.get('message') || 'Mobile Inquiry'
       };
 
-      console.log('Mobile Form Submission:', data);
+      console.log('Mobile Form Submission (Null API Connection):', data);
 
       // Simulate API call and success transition
       setTimeout(() => {
