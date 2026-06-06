@@ -1,0 +1,179 @@
+/* Baseline Desktop Setup */
+:root {
+  /* Typography Variables */
+  --_fonts---h1--size: 7.222em;
+  --_fonts---h1--line-height: 84.615%;
+  --_fonts---h1--letter-spacing: -.08em;
+  --_fonts---h2--size: 5em;
+  --_fonts---h3--size: 3.333em;
+  --_fonts---h4--size: 2.222em;
+  --_fonts---h5--size: 1.667em;
+  --_fonts---h6--size: 1.111em;
+  --_fonts---p7--size: .833em;
+  --_fonts---l1--size: .694em;
+  --_fonts---p2--size: 4.444em;
+  --_fonts---t6--size: 1.111em;
+  --_fonts---t7--size: .833em;
+  
+  /* Sizing / Spacing Variables */
+  --4px: .277em;
+  --8px: .555em;
+  --12px: .833em;
+  --24px: 1.666em;
+  --36px: 2.5em;
+  --60px: 4.167em;
+  --96px: 6.666em;
+  --156px: 10.833em;
+  --216px: 15em;
+  
+  /* Semantic Margins mapped to sizes */
+  --_margins---m-0: 0em;
+  --_margins---m-4: var(--4px);
+  --_margins---m-6: var(--6px);
+  --_margins---m-12: var(--12px);
+  --_margins---m-24: var(--24px);
+  --_margins---m-36: var(--36px);
+  --_margins---m-60: var(--60px);
+  --_margins---m-96: var(--96px);
+  --_margins---m-156: var(--156px);
+  --_margins---m-216: var(--216px);
+}
+
+/* Fluid Typography Foundation */
+html, body {
+  font-size: 1vw !important;
+}
+
+/* Base Desktop Variables & Grids */
+.grid { grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; display: grid; }
+.grid._4-columns { grid-template-columns: 1fr 1fr 1fr 1fr; }
+.grid._6-columns { grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; }
+.grid._21-columns { grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; }
+
+/* Desktop Baseline Utilities */
+.b-desktop { display: block; }
+.b-mobile, .f-mobile { display: none; }
+.f-desktop { display: flex; }
+
+/* Desktop Baseline Feature Grid */
+.features-cms_list {
+  grid-column-gap: var(--_margins---m-12);
+  grid-row-gap: var(--_margins---m-60);
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-auto-columns: 1fr;
+  display: grid;
+}
+
+/* Mobile Overrides (max-width: 991px) */
+@media screen and (max-width: 991px) {
+  body {
+    /* Responsive Mobile Typography */
+    --_fonts---h1--size: 17.204em;
+    --_fonts---h1--line-height: 87.5%;
+    --_fonts---h2--size: 10.753em;
+    --_fonts---h3--size: 8.602em;
+    --_fonts---h4--size: 6.452em;
+    --_fonts---h5--size: 5.376em;
+    --_fonts---h6--size: 4.301em;
+    --_fonts---p7--size: 3.226em;
+    --_fonts---l1--size: 2.688em;
+    --_fonts---p2--size: 8.602em;
+    --_fonts---t6--size: 4.301em;
+    --_fonts---t7--size: 3.226em;
+
+    /* Responsive Mobile Sizing / Spacing */
+    --4px: 1.075em;
+    --8px: 2.151em;
+    --12px: 3.226em;
+    --24px: 4.839em;
+    --36px: 6.452em;
+    --60px: 9.677em;
+    --96px: 17.742em;
+    --156px: 29.032em;
+    --216px: 41.935em;
+    
+    /* Useful special overrides */
+    --_special-units---100vw: 100em;
+    --_special-units---1-cell: 8.065em;
+  }
+  
+  /* Mobile Grid Overrides */
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
+    width: 100%;
+  }
+  .grid._4-columns {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .grid._6-columns, .grid._21-columns {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+  
+  /* Reset manual strict spans on Mobile */
+  .grid > [id^="w-node-"] {
+    grid-area: auto !important;
+    grid-column: 1 / -1 !important; /* Forces items to stack naturally */
+  }
+
+  /* Utilities */
+  .b-desktop { display: none; }
+  .b-mobile { display: block; }
+  .f-mobile { display: flex; }
+  .f-desktop { display: none; }
+
+  /* Image Object Fit logic mapped from user instructions */
+  img {
+    object-fit: cover;
+    max-width: none;
+  }
+  img.contain {
+    object-fit: contain;
+  }
+  
+  /* Feature cards touch-swipe */
+  .features-cms_list {
+    padding: var(--_margins---m-96) var(--_margins---m-36) var(--_margins---m-36);
+    grid-auto-columns: 1fr;
+    display: flex;
+    overflow: auto;
+  }
+  .features-cms_list_item {
+    /* Forcing an explicit calculated width to allow items to push past the right edge */
+    width: calc(((var(--_special-units---1-cell) + var(--12px))*6) - var(--12px));
+    flex: none;
+  }
+}
+
+/* 3. Mobile Portrait (max-width: 767px) */
+@media screen and (max-width: 767px) {
+  /* Force global Webflow columns (.w-col) to 100% width and drop horizontal layout utilities */
+  .w-col {
+    width: 100% !important;
+    display: block !important;
+  }
+  
+  /* Additional native alignment mapping */
+  .grid._4-columns, .grid._6-columns, .grid._21-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 4. Small Mobile (max-width: 479px) */
+@media screen and (max-width: 479px) {
+  /* Micro-breakpoint overriding edge cases and tightening spacing properties automatically applied by Webflow */
+  .features-cms_list {
+    padding: var(--_margins---m-60) var(--_margins---m-24) var(--_margins---m-24);
+  }
+  .section, .container {
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+  }
+}
+
+/* 5. Orientation Catch */
+@media screen and (orientation: landscape) and (max-width: 991px) {
+  .landscape-cover {
+    display: block !important;
+  }
+}
